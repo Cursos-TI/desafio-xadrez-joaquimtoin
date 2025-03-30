@@ -1,49 +1,71 @@
 #include <stdio.h>
 
-// Desafio de Xadrez - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
-// O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
+//FUNÇÃO DE MOVIMENTO DO BISPO
+void bispo()
+{
+        //IMPRIME O MOVIMENTO DO BISCO 
+        for(int i = 1, j = 1; i <= 5; i++)
+        {
+            printf("Cima\n");
+            while(j == i)
+            {
+                printf("Direita\n");
+                j++;
+            }
+        }                
+}
 
-int main() {
-    
-    int movimentoBispo, movimentoCavalo, movimentoTorre = 1, movimentoRainha = 1; 
-
-    printf("### BISPO ###\n"); //IMPRIME O TITULO DA PEÇA
-    for(movimentoBispo = 1; movimentoBispo <= 5; movimentoBispo++) //IMPRIME E INCREMENTA ATÉ A VARIAVEL DO BISPO ATINGIR
-    {
-        //IMPRIME O MOVIMENTO DO BISCO
-        printf("Direita\n");
-        printf("Cima\n");
-    }
-
-    printf("\n### TORRE ###\n"); //IMPRIME O TITULO DA PEÇA
-    while(movimentoTorre <= 5)
+//FUNÇÃO DE MOVIMENTO DA TORRE
+void torre (int movimento)
+{
+    //SE A VARIAVEL FOR MAIOR QUE ZERO
+    if(movimento > 0)
     {
         printf("Direita\n"); //IMPRIME OS MOVIMENTOS DA TORRE
-        movimentoTorre++; //INCREMENTA A VARIAVEL DE MOVIMENTO DA TORRE
+        torre(movimento - 1); //DECREMENTA A VARIAVEL MOVIMENTO SE MOVIMENTO FOR MAIOR QUE ZERO
     }
+}
 
-    printf("\n### RAINHA ###\n"); //IMPRIME O TITULO DA PEÇA
-    
-    do
+//FUNÇÃO DE MOVIMENTO DA RAINHA
+void rainha (int movimento)
+{
+    //SE A VARIAVEL FOR MAIOR QUE ZERO
+    if(movimento > 0)
     {
         printf("Esquerda\n"); //IMPRIME O MOVIMENTO DA RAINHA
-        movimentoRainha++; //INCREMENTO NA VARIAVEL DE MOVIMENTO DA RAINHA
-    } while(movimentoRainha <= 8); //VERIFICA A CONDIÇÃO APÓS A PRIMEIRA EXECUÇÃO
+        rainha(movimento - 1); //DECREMENTA A VARIAVEL MOVIMENTO SE MOVIMENTO FOR MAIOR QUE ZERO
+    }
+}
+
+//EXECUÇÃO DO PROGRAMA
+int main ()
+{
+    int movimentoTorre = 5, movimentoRainha = 8; 
+
+    printf("### BISPO ###\n"); //IMPRIME O TITULO DA PEÇA
+    bispo(); //CHAMA A FUNÇÃO DE MOVIMENTO DO BISPO
+
+    printf("\n### TORRE ###\n"); //IMPRIME O TITULO DA PEÇA
+    torre(movimentoTorre); //CHAMA A FUNÇÃO DE MOVIMENTO DA TORRE
+
+    printf("\n### RAINHA ###\n"); //IMPRIME O TITULO DA PEÇA
+    rainha(movimentoRainha); //CHAMA A FUNÇÃO DE MOVIMENTO DA RAINHA
 
     printf("\n### CAVALO ###\n"); //IMPRIME O TITULO DA PEÇA
 
-    for(movimentoCavalo = 1; movimentoCavalo <=1; movimentoCavalo++) //IMPRIME E INCREMENTA O MOVIMENTO DO CAVALO UMA VEZ
+    //MOVIMENTAÇÃO DO CAVALO
+    for(int movimentoCavalo = 1, j = 2; 
+            movimentoCavalo <= j; 
+            movimentoCavalo ++) 
     {   
-        int i = 1;// VARIAVEL INTERNA PRA CONTAGEM
-        // IMPRIME "BAIXO" DUAS VEZES ANTES DE SEGUIR PARA A PRÓXIMA LINHA
-        do 
-        {
-            printf("Baixo\n"); //IMPRIME "BAIXO"
-            i++;
-        }while( i <= 2); // ENQUANTO "I" FOR MENOR QUE 2 IMPRIME
-        printf("Esquerda\n"); //APOS A FINALIZAR O DO WHILE IMPRIME "ESQUERDA" FINALIZANDO O MOVIMENTO DO CAVALO
-    }
+        printf("Cima\n");//IMPRIME "Cima"
 
+        // IMPRIME "Direita" SE A CONDIÇÃO FOR VERDADE E ENCERRA O LAÇO   
+        if( movimentoCavalo == j)
+        {
+            printf("Direita\n"); 
+            break; //ENCERRA O LAÇO         
+        } 
+    }
     return 0;
 }
