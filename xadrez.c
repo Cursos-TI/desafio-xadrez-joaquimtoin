@@ -6,10 +6,10 @@
 
 int main() {
     
-    int movimentoBispo = 1, movimentoTorre = 1, movimentoRainha = 1; 
+    int movimentoBispo, movimentoCavalo, movimentoTorre = 1, movimentoRainha = 1; 
 
     printf("### BISPO ###\n"); //IMPRIME O TITULO DA PEÇA
-    for(movimentoBispo; movimentoBispo <= 5; movimentoBispo++) //IMPRIME E INCREMENTA ATÉ A VARIAVEL DO BISPO ATINGIR
+    for(movimentoBispo = 1; movimentoBispo <= 5; movimentoBispo++) //IMPRIME E INCREMENTA ATÉ A VARIAVEL DO BISPO ATINGIR
     {
         //IMPRIME O MOVIMENTO DO BISCO
         printf("Direita\n");
@@ -30,6 +30,20 @@ int main() {
         printf("Esquerda\n"); //IMPRIME O MOVIMENTO DA RAINHA
         movimentoRainha++; //INCREMENTO NA VARIAVEL DE MOVIMENTO DA RAINHA
     } while(movimentoRainha <= 8); //VERIFICA A CONDIÇÃO APÓS A PRIMEIRA EXECUÇÃO
+
+    printf("\n### CAVALO ###\n"); //IMPRIME O TITULO DA PEÇA
+
+    for(movimentoCavalo = 1; movimentoCavalo <=1; movimentoCavalo++) //IMPRIME E INCREMENTA O MOVIMENTO DO CAVALO UMA VEZ
+    {   
+        int i = 1;// VARIAVEL INTERNA PRA CONTAGEM
+        // IMPRIME "BAIXO" DUAS VEZES ANTES DE SEGUIR PARA A PRÓXIMA LINHA
+        do 
+        {
+            printf("Baixo\n"); //IMPRIME "BAIXO"
+            i++;
+        }while( i <= 2); // ENQUANTO "I" FOR MENOR QUE 2 IMPRIME
+        printf("Esquerda\n"); //APOS A FINALIZAR O DO WHILE IMPRIME "ESQUERDA" FINALIZANDO O MOVIMENTO DO CAVALO
+    }
 
     return 0;
 }
